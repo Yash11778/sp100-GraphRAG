@@ -8,3 +8,4 @@ data/chunks/*.pkl
 data/graph_csv/
 data/chunks/*.npy
 sp100_dataset-20260717T162023Z-1-001/
+docs/
