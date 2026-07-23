@@ -1,0 +1,98 @@
+// ===========================================================================
+// Round 3 — SP100 GraphRAG schema for TigerGraph Savanna
+// ===========================================================================
+// Design goal: the typed edges (auditor, sector, board, competitor, risk,
+// events) let Tier-C aggregation/intersection questions be answered by a short
+// graph traversal instead of a full-corpus RAG sweep. That traversal is the
+// token-reduction story. Chunk vertices carry embeddings for GraphRAG vector
+// search (Savanna is both graph DB and vector DB, per the brief).
+//
+// Run once against a fresh, empty graph:  @sp100
+// ===========================================================================
+
+CREATE GRAPH sp100()
+
+USE GRAPH sp100
+
+// --- Vertices --------------------------------------------------------------
+CREATE SCHEMA_CHANGE JOB sp100_schema FOR GRAPH sp100 {
+
+  // Core entity: one per S&P-100 company.
+  ADD VERTEX Company (
+      PRIMARY_ID ticker STRING,
+      name STRING,
+      sector STRING
+  ) WITH primary_id_as_attribute="true";
+
+  // Sector as its own node so "companies in sector X" is a 1-hop neighbourhood.
+  ADD VERTEX Sector (PRIMARY_ID name STRING) WITH primary_id_as_attribute="true";
+
+  // Audit firm (canonical: E&Y / PwC / Deloitte / KPMG LLP).
+  ADD VERTEX AuditFirm (PRIMARY_ID name STRING) WITH primary_id_as_attribute="true";
+
+  // People: board members, executives (CEO/CFO/etc.).
+  ADD VERTEX Person (
+      PRIMARY_ID person_id STRING,
+      name STRING
+  ) WITH primary_id_as_attribute="true";
+
+  // A named external entity a company flags as a competitor / foundry partner
+  // (e.g. NVIDIA, TSMC, Intel). May or may not itself be an S&P-100 Company.
+  ADD VERTEX Entity (
+      PRIMARY_ID name STRING,
+      kind STRING          // "competitor" | "foundry" | ...
+  ) WITH primary_id_as_attribute="true";
+
+  // A risk / strategic topic mentioned in a 10-K (e.g. "GLP-1", "climate change").
+  ADD VERTEX Topic (PRIMARY_ID name STRING) WITH primary_id_as_attribute="true";
+
+  // One filing (10-K / 8-K / DEF14A).
+  ADD VERTEX Document (
+      PRIMARY_ID doc_id STRING,
+      ticker STRING,
+      form STRING,
+      filing_date STRING,
+      accession STRING,
+      source_url STRING
+  ) WITH primary_id_as_attribute="true";
+
+  // A material event reported in an 8-K (dividend, buyback, CEO change, ...).
+  ADD VERTEX Event (
+      PRIMARY_ID event_id STRING,
+      event_type STRING,   // "dividend" | "buyback" | "leadership" | "restructuring"
+      value STRING,        // e.g. "$1.47/share", "$25B"
+      event_date STRING,
+      summary STRING
+  ) WITH primary_id_as_attribute="true";
+
+  // Retrieval unit: a text chunk of a document, with its embedding vector.
+  ADD VERTEX Chunk (
+      PRIMARY_ID chunk_id STRING,
+      doc_id STRING,
+      ticker STRING,
+      form STRING,
+      seq INT,
+      text STRING
+  ) WITH primary_id_as_attribute="true";
+
+  // --- Edges ---------------------------------------------------------------
+  ADD DIRECTED EDGE IN_SECTOR       (FROM Company, TO Sector);
+  ADD DIRECTED EDGE AUDITED_BY      (FROM Company, TO AuditFirm);
+  ADD DIRECTED EDGE HAS_DIRECTOR    (FROM Company, TO Person);
+  ADD DIRECTED EDGE HAS_OFFICER     (FROM Company, TO Person, role STRING);
+  ADD DIRECTED EDGE NAMES_COMPETITOR(FROM Company, TO Entity);
+  ADD DIRECTED EDGE NAMES_FOUNDRY   (FROM Company, TO Entity);
+  ADD DIRECTED EDGE MENTIONS_TOPIC  (FROM Company, TO Topic, form STRING);
+  ADD DIRECTED EDGE FILED           (FROM Company, TO Document);
+  ADD DIRECTED EDGE REPORTS_EVENT   (FROM Document, TO Event);
+  ADD DIRECTED EDGE HAS_CHUNK       (FROM Document, TO Chunk);
+  // Chunk -> back to its company for fast "restrict retrieval to company X".
+  ADD DIRECTED EDGE CHUNK_OF        (FROM Chunk, TO Company);
+}
+
+RUN SCHEMA_CHANGE JOB sp100_schema
+
+// --- Vector index on Chunk embeddings --------------------------------------
+// (Savanna: create the HNSW vector attribute/index on Chunk. Exact DDL depends
+//  on the Savanna vector API version — filled in at load time against the live
+//  instance. Embeddings are all-MiniLM-L6-v2, 384-dim, shared with Basic RAG.)

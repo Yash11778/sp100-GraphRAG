@@ -1,0 +1,146 @@
+[
+  {
+    "id": "DV-A01",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is Goldman Sachs's independent registered public accounting firm?",
+    "answer": "PricewaterhouseCoopers LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A02",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is Boeing's independent registered public accounting firm?",
+    "answer": "Deloitte & Touche LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A03",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is Walt Disney Company (The)'s independent registered public accounting firm?",
+    "answer": "PricewaterhouseCoopers LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A04",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is 3M's independent registered public accounting firm?",
+    "answer": "PricewaterhouseCoopers LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A05",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is General Motors's independent registered public accounting firm?",
+    "answer": "Ernst & Young LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A06",
+    "tier": "A",
+    "hop": 1,
+    "question": "Who is Texas Instruments's independent registered public accounting firm?",
+    "answer": "Ernst & Young LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-A11",
+    "tier": "A",
+    "hop": 1,
+    "question": "What quarterly cash dividend per share did Bank of New York Mellon declare in its 2026 8-K?",
+    "answer": "$0.63/share",
+    "dev": true
+  },
+  {
+    "id": "DV-A12",
+    "tier": "A",
+    "hop": 1,
+    "question": "What quarterly cash dividend per share did U.S. Bancorp declare in its 2026 8-K?",
+    "answer": "$0.54/share",
+    "dev": true
+  },
+  {
+    "id": "DV-A13",
+    "tier": "A",
+    "hop": 1,
+    "question": "What quarterly cash dividend per share did Intuit declare in its 2026 8-K?",
+    "answer": "$1.20/share",
+    "dev": true
+  },
+  {
+    "id": "DV-A14",
+    "tier": "A",
+    "hop": 1,
+    "question": "What quarterly cash dividend per share did Morgan Stanley declare in its 2026 8-K?",
+    "answer": "$1.15/share",
+    "dev": true
+  },
+  {
+    "id": "DV-B01",
+    "tier": "B",
+    "hop": 2,
+    "question": "The company that authorized a $4.1B share-repurchase program (a 2026 8-K) \u2014 who is its auditor?",
+    "answer": "FedEx; Ernst & Young LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-B02",
+    "tier": "B",
+    "hop": 2,
+    "question": "The company that authorized a $5.0B share-repurchase program (a 2026 8-K) \u2014 who is its auditor?",
+    "answer": "Intuitive Surgical; PricewaterhouseCoopers LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-B03",
+    "tier": "B",
+    "hop": 2,
+    "question": "The company that authorized a $2.0B share-repurchase program (a 2026 8-K) \u2014 who is its auditor?",
+    "answer": "PayPal; PricewaterhouseCoopers LLP",
+    "dev": true
+  },
+  {
+    "id": "DV-C01",
+    "tier": "C",
+    "hop": 3,
+    "question": "List all dataset companies audited by Deloitte & Touche.",
+    "answer": "AMT, BA, BKNG, BLK, BMY, BRK.B, CMCSA, DE, DUK, GE, HON, LOW, MET, MS, MSFT, NEE, PG, SBUX, SCHW, SO, TMUS, UNH, UNP, UPS",
+    "dev": true
+  },
+  {
+    "id": "DV-C02",
+    "tier": "C",
+    "hop": 3,
+    "question": "Which companies authorized a share-repurchase program via an 8-K in the dataset?",
+    "answer": "ACN, ADBE, FDX, ISRG, MS, NFLX, PYPL",
+    "dev": true
+  },
+  {
+    "id": "DV-C03",
+    "tier": "C",
+    "hop": 3,
+    "question": "Which companies are in the Energy sector?",
+    "answer": "COP, CVX, XOM",
+    "dev": true
+  },
+  {
+    "id": "DV-C04",
+    "tier": "C",
+    "hop": 3,
+    "question": "Which Ernst & Young-audited companies are in the Information Technology sector?",
+    "answer": "AAPL, AMD, CRM, INTC, INTU, ORCL, PLTR, TXN",
+    "dev": true
+  },
+  {
+    "id": "DV-C05",
+    "tier": "C",
+    "hop": 3,
+    "question": "Which Deloitte-audited companies are in the Industrials sector?",
+    "answer": "BA, DE, GE, HON, UNP, UPS",
+    "dev": true
+  }
+]

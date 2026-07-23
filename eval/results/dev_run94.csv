@@ -1,0 +1,872 @@
+qid,tier,pipeline,judge,judge_source,graded_score,citation_score,bertscore_f1,prompt_tokens,completion_tokens,context_tokens,routing_tokens,total_tokens,api_prompt_tokens,api_output_tokens,api_total_tokens,latency_s,graph_used,graph_path,sources,answer,ground_truth,question,evidence
+DV-A01,A,graphrag,PASS,gemini_strict,3,2,0.3886,153,18,19,0,171,157,18,175,2.979,True,AUDITED_BY of GS,graph://AUDITED_BY of GS,Goldman Sachs's independent registered public accounting firm is PricewaterhouseCoopers LLP.,PricewaterhouseCoopers LLP,Who is Goldman Sachs's independent registered public accounting firm?,Graph result — Goldman Sachs (GS)'s independent auditor: PricewaterhouseCoopers LLP
+DV-A02,A,graphrag,PASS,gemini_strict,3,2,0.4962,151,17,18,0,168,154,16,170,0.973,True,AUDITED_BY of BA,graph://AUDITED_BY of BA,Boeing's independent registered public accounting firm is Deloitte & Touche LLP.,Deloitte & Touche LLP,Who is Boeing's independent registered public accounting firm?,Graph result — Boeing (BA)'s independent auditor: Deloitte & Touche LLP
+DV-A03,A,graphrag,PASS,gemini_strict,3,2,0.2673,161,22,23,0,183,164,20,184,1.321,True,AUDITED_BY of DIS,graph://AUDITED_BY of DIS,Walt Disney Company (The)'s independent registered public accounting firm is PricewaterhouseCoopers LLP.,PricewaterhouseCoopers LLP,Who is Walt Disney Company (The)'s independent registered public accounting firm?,Graph result — Walt Disney Company (The) (DIS)'s independent auditor: PricewaterhouseCoopers LLP
+DV-A04,A,graphrag,PASS,gemini_strict,3,2,0.4038,155,17,20,0,172,159,17,176,1.219,True,AUDITED_BY of MMM,graph://AUDITED_BY of MMM,3M's independent registered public accounting firm is PricewaterhouseCoopers LLP.,PricewaterhouseCoopers LLP,Who is 3M's independent registered public accounting firm?,Graph result — 3M (MMM)'s independent auditor: PricewaterhouseCoopers LLP
+DV-A05,A,graphrag,PASS,gemini_strict,3,2,0.1559,150,14,16,0,164,155,15,170,1.288,True,AUDITED_BY of GM,graph://AUDITED_BY of GM,General Motors's independent registered public accounting firm is Ernst & Young LLP.,Ernst & Young LLP,Who is General Motors's independent registered public accounting firm?,Graph result — General Motors (GM)'s independent auditor: Ernst & Young LLP
+DV-A06,A,graphrag,PASS,gemini_strict,3,2,0.1491,151,14,17,0,165,156,15,171,1.231,True,AUDITED_BY of TXN,graph://AUDITED_BY of TXN,Texas Instruments's independent registered public accounting firm is Ernst & Young LLP.,Ernst & Young LLP,Who is Texas Instruments's independent registered public accounting firm?,Graph result — Texas Instruments (TXN)'s independent auditor: Ernst & Young LLP
+DV-A11,A,graphrag,PASS,gemini_strict,3,2,0.2563,1855,26,1710,0,1881,2143,30,2173,1.928,True,REPORTS_EVENT(dividend) of BNY,graph://REPORTS_EVENT(dividend) of BNY; graph://REPORTS_EVENT(*) of BNY; BNY_8-K_2026-07-15::c4; BNY_8-K_2026-07-15::c3; BNY_10-K_2026-02-25::c16; BNY_10-K_2026-02-25::c55; BNY_10-K_2026-02-25::c56; BNY_10-K_2026-02-25::c53,Bank of New York Mellon declared a quarterly cash dividend of $0.63 per share in its 2026 8-K.,$0.63/share,What quarterly cash dividend per share did Bank of New York Mellon declare in its 2026 8-K?,"Graph result — Bank of New York Mellon (BNY) 8-K events (dividend): [dividend] $0.63/share filed 2026-06-24 — ny"") announced its intention to increase its quarterly cash dividend on its common shares by 19% from $0.53 to $0.63 per share, commencing as early as the third quarter of 2026, su
+
+---
+
+Graph result — Bank of New York Mellon (BNY) 8-K events: [dividend] $0.63/share filed 2026-06-24
+
+---
+
+[BNY 8-K] the liabilities under that Section and shall not be deemed to be incorporated by reference into any filing of BNY under the Securities Act of 1933 or the Exchange Act. The information included in Exhibit 99.1, other than in the Excluded Section, shall be deemed ""filed"" for purposes of the Exchange Act.
+
+99.2
+The Bank of New York Mellon Corporation Financial Supplement dated July 15, 2026, for the second quarter of 2026.
+
+The information included in Exhibit 99.2 shall be deemed ""filed"" for purposes of the Exchange Act.
+
+99.3
+Second Quarter 2026 Quarterly Update Presentation dated July 15, 2026.
+
+The information included in Exhibit 99.3 shall not be deemed ""filed"" for purposes of Section 18 of the Exchange Act or otherwise subject to the liabilities under that Section and shall not be deemed to be incorporated by reference into any filing of BNY under the Securities Act of 1933 or the Exchange Act.
+
+104 Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document.
+
+2
+
+SIGNATURES
+
+Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused
+
+---
+
+[BNY 8-K] Supplement are attached hereto as Exhibit 99.1 and Exhibit 99.2, respectively, and are incorporated herein by reference.
+
+ITEM 7.01. REGULATION FD DISCLOSURE.
+
+On July 15, 2026, BNY will hold a conference call and webcast to discuss its financial results for the second quarter ended June 30, 2026 and outlook. A copy of the Quarterly Update Presentation for the conference call and webcast is attached hereto as Exhibit 99.3.
+
+ITEM 9.01. FINANCIAL STATEMENTS AND EXHIBITS.
+
+(d) EXHIBITS.
+
+Exhibit
+
+Number Description
+
+99.1
+The Bank of New York Mellon Corporation Earnings Release dated July 15, 2026, announcing financial results for the second quarter of 2026.
+
+The quotation in Exhibit 99.1 (the ""Excluded Section"") shall not be deemed ""filed"" for purposes of Section 18 of the Securities Exchange Act of 1934 (""Exchange Act"") or otherwise subject to the liabilities under that Section and shall not be deemed to be incorporated by reference into any filing of BNY under the Securities Act of 1933 or the Exchange Act. The information included in Exhibit
+
+---
+
+[BNY 10-K] 3
+
+THE BANK OF NEW YORK MELLON CORPORATION
+
+FORM 10-K INDEX
+
+PART I
+
+Item 1.
+
+Business
+
+5
+
+Item 1A.
+
+Risk factors
+
+7
+
+Item 1B.
+
+Unresolved staff comments
+
+7
+
+Item 1C.
+
+Cybersecurity
+
+7
+
+Item 2.
+
+Properties
+
+7
+
+Item 3.
+
+Legal proceedings
+
+8
+
+Item 4.
+
+Mine safety disclosures
+
+8
+
+PART II
+
+Item 5.
+
+Market for registrant's common equity, related stockholder matters and issuer purchases of equity securities
+
+9
+
+Item 6.
+
+[Reserved]
+
+9
+
+Item 7.
+
+Management's discussion and analysis of financial condition and results of operations
+
+9
+
+Item 7A.
+
+Quantitative and qualitative disclosures about market risk
+
+9
+
+Item 8.
+
+Financial statements and supplementary data
+
+9
+
+Item 9.
+
+Changes in and disagreements with accountants on accounting and financial disclosure
+
+9
+
+Item 9A.
+
+Controls and procedures
+
+9
+
+Item 9B.
+
+Other information
+
+10
+
+Item 9C.
+
+Disclosure regarding foreign jurisdictions that prevent inspections
+
+10
+
+PART III
+
+Item 10.
+
+Directors, executive officers and corporate governance
+
+11
+
+Item 11.
+
+Executive compensation
+
+12
+
+Item
+
+---
+
+[BNY 10-K] Mellon Corporation and Robin Vince.
+Previously filed as Exhibit 10.42 to the Company's Annual Report on Form 10-K (File No. 001-35651) for the year ended Dec. 31, 2022, and incorporated herein by reference.
+
+10.18 * Aircraft Time Sharing Agreement, entered into as of Jan. 23, 2023, by and between The Bank of New York Mellon and Robin Vince.
+Previously filed as Exhibit 10.24 to the Company's Annual Report on Form 10-K (File No. 001-35651) for the year ended Dec. 31, 2023, and incorporated herein by reference.
+
+16 BNY
+
+INDEX TO EXHIBITS (continued)
+
+Exhibit
+Description Method of Filing
+
+10.19 * Aircraft Time Sharing Agreement, entered into as of Oct. 29, 2024, by and between The Bank of New York Mellon and Robin Vince.
+Previously filed as Exhibit 10.22 to the Company's Annual Report on Form 10-K (File No. 001-35651) for the year ended Dec. 31, 2024, and incorporated herein by reference.
+
+10.20 * The Bank of New York Mellon Corporation 2023
+
+---
+
+[BNY 10-K] . 001-35651) for the year ended Dec. 31, 2024, and incorporated herein by reference.
+
+10.20 * The Bank of New York Mellon Corporation 2023 Long-Term Incentive Plan.
+Previously filed as Annex B to the Company's Definitive Proxy Statement on Schedule 14A (File No. 001-35651) on March 1, 2023, and incorporated herein by reference.
+
+10.21
+*
+2023 Form of Performance Share Unit Agreement.
+Previously filed as Exhibit 10.2 to the Company's Quarterly Report on Form 10-Q (File No. 001-35651) for the quarter ended March. 31, 2023, and incorporated herein by reference.
+
+10.22
+*
+2023 Form of Restricted Stock Unit Agreement.
+Previously filed as Exhibit 10.1 to the Company's Quarterly Report on Form 10-Q (File No. 001-35651) for the quarter ended March 31, 2023, and incorporated herein by reference.
+
+10.23
+*
+
+2024 Form of Performance Share Unit Agreement.
+
+Previously filed as Exhibit 10.28 to the Company's Annual Report on Form 10-K (File No. 001-356
+
+---
+
+[BNY 10-K] of Amended and Restated Indemnification Agreement with Directors of The Bank of New York Mellon Corporation.
+Previously filed as Exhibit 10.1 to the Company's Quarterly Report on Form 10-Q (File No. 001-35651) for the quarter ended June 30, 2016, and incorporated herein by reference.
+
+10.12
+*
+The Bank of New York Mellon Corporation 2019 Long-Term Incentive Plan.
+Previously filed as Annex C to the Company's Definitive Proxy Statement on Schedule 14A (File No. 001-35651) on March 8, 2019 and incorporated herein by reference.
+
+10.13
+*
+The Bank of New York Mellon Corporation 2019 Executive Incentive Compensation Plan.
+Previously filed as Exhibit 10.1 to the Company's Quarterly Report on Form 10-Q (File No. 001-35651) for the quarter ended Sept. 30, 2019, and incorporated herein by reference.
+
+10.14
+*
+Letter Agreement, dated Aug. 19, 2020, between The Bank of New York Mellon Corporation and Robin Vince.
+Previously filed as Exhibit 10.49 to the Company's Annual Report on Form 10-K (File"
+DV-A12,A,graphrag,PASS,gemini_strict,3,2,0.1675,1839,45,1694,0,1884,2102,50,2152,2.003,True,REPORTS_EVENT(dividend) of USB,graph://REPORTS_EVENT(dividend) of USB; graph://REPORTS_EVENT(*) of USB; USB_8-K_2026-06-24::c4; USB_10-K_2026-02-23::c118; USB_DEF14A_2026-03-10::c391; USB_10-K_2026-02-23::c107; USB_10-K_2026-02-23::c122; USB_10-K_2026-02-23::c119,"U.S. Bancorp declared a quarterly common stock dividend of $0.54 per share, starting in the third quarter of 2026. This represents an increase from the previous dividend of $0.52 per share.",$0.54/share,What quarterly cash dividend per share did U.S. Bancorp declare in its 2026 8-K?,"Graph result — U.S. Bancorp (USB) 8-K events (dividend): [dividend] $0.54/share filed 2026-06-24 — include an increase in the Company's quarterly common stock dividend from $0.52 to $0.54 per share (subject to approval by the Company's Board of Directors), starting in the third 
+
+---
+
+Graph result — U.S. Bancorp (USB) 8-K events: [dividend] $0.54/share filed 2026-06-24
+
+---
+
+[USB 8-K] remain unchanged at 2.6% until October 1, 2027. A copy of the press release is attached as Exhibit 99.1 hereto and is incorporated into this Item 8.01 by reference.
+
+The Company also announced that its planned capital actions include an increase in the Company's quarterly common stock dividend from $0.52 to $0.54 per share (subject to approval by the Company's Board of Directors), starting in the third quarter of 2026.
+
+Forward-Looking Statements
+
+THE FOLLOWING INFORMATION APPEARS IN ACCORDANCE WITH THE PRIVATE SECURITIES LITIGATION REFORM ACT OF 1995: This current report contains forward-looking statements about the Company. Statements that are not historical or current facts, including statements about beliefs and expectations, are forward-looking statements and are based on the information available to, and assumptions and estimates made by, management as of the date hereof. These forward-looking statements cover, among other things, the Company's SCB requirement and capital action plans. Forward-looking statements involve inherent risks and uncertainties that could cause actual results to differ materially from those set forth in forward-looking statements, including changes to statutes, regulations, or regulatory policies or practices and the risks and uncertainties more fully discussed in
+
+---
+
+[USB 10-K] April 21, 2015-December 31, 2016). Filed as Exhibit 10.4 to Form 8-K filed on April 23, 2015.
+
+(1)(2)10.14
+
+Form of Stock Option Award Agreement for Executive Officers under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1, 2017-December 31, 2017). Filed as Exhibit 10.44 to Form 10-K for the year ended December 31, 2016.
+
+(1)(2)10.15
+
+Form of Restricted Stock Unit Award Agreement for Non-Employee Directors under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made April 21, 2015-December 31, 2016). Filed as Exhibit 10.2 to Form 8-K filed on April 23, 2015.
+
+(1)(2)10.16
+
+Form of Restricted Stock Unit Award Agreement for Non-Employee Directors under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1, 2017-April 15, 2024). Filed as Exhibit 10.42
+
+---
+
+[USB DEF14A] ​
+1,691
+​
+​
+
+​
+
+Less: Notable items, including the impact of earnings allocated to participating stock awards(1)
+
+​
+​
+​
+​
+-
+​
+​
+​
+​
+​
+(81)
+​
+​
+
+​
+
+Net income applicable to U.S. Bancorp common shareholders, excluding intangibles amortization and notable items
+
+​
+​
+​
+​
+2,065
+​
+​
+​
+​
+​
+1,772
+​
+​
+
+​
+
+Annualized net income applicable to U.S. Bancorp common shareholders, excluding intangibles amortization (c)
+
+​
+​
+​
+​
+8,193
+​
+​
+​
+​
+​
+6,727
+​
+​
+
+​
+
+Annualized net income applicable to U.S. Bancorp common shareholders, excluding intangibles amortization and notable items (d)
+
+​
+​
+​
+​
+8,193
+​
+​
+​
+​
+​
+7,049
+​
+​
+
+​
+Average total equity
+​
+​
+​
+​
+65,048
+​
+​
+​
+​
+​
+59,272
+​
+​
+
+​
+Less: Average
+
+---
+
+[USB 10-K] (awarded to the members of the Company's Managing Committee and settled in shares of the Company's common stock on a one-for-one basis) and restricted stock units (settled in shares of the Company's common stock on a one-for-one basis) under the 2024 Plan, the 2015 Plan, the U.S. Bancorp Amended and Restated 2007 Stock Incentive Plan and the U.S. Bancorp 2001 Stock Incentive Plan, as amended. No exercise price is paid upon vesting, and thus, no exercise price is included in the table.
+
+(d)Shares of the Company's common stock that are issuable pursuant to various active and frozen deferred compensation plans of U.S. Bancorp and its predecessor entities that provide distribution of deferred compensation deemed to be invested in U.S. Bancorp stock in the form of shares of U.S. Bancorp common stock, unless the Company chooses cash payment to the extent permitted by the applicable plan, and amounts attributable to previously surrendered stock options in the form of shares of U.S. Bancorp common stock. No exercise price is paid when shares are issued pursuant to the deferred compensation plans.
+
+The active deferred compensation plan allows non-employee directors, and the frozen deferred compensation plans
+
+---
+
+[USB 10-K] under U.S. Bancorp 2024 Stock Incentive Plan (used for grants made after April 16, 2024). Filed as Exhibit 4.6 to Form S-8 (File No. 333-278752) filed on April 17, 2024.
+
+(1)(2)10.25
+
+Form of Performance Restricted Stock Unit Award Agreement for Executive Officers under U.S. Bancorp 2024 Stock Incentive Plan (used for grants made January 1, 2025-January 26, 2026). Filed as Exhibit 10.25 to Form 10-K for the year ended December 31, 2024.
+
+(1)(2)10.26
+
+Form of Restricted Stock Unit Award Agreement for Executive Officers under U.S. Bancorp 2024 Stock Incentive Plan (used for grants made January 1, 2025-January 26, 2026). Filed as Exhibit 10.26 to Form 10-K for the year ended December 31, 2024.
+
+(1)(2)10.27
+
+Form of Aircraft Time Sharing Agreement. Filed as Exhibit 10.1 to Form 8-K filed on August 14, 2025.
+
+(
+
+---
+
+[USB 10-K] .S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1, 2017-April 15, 2024). Filed as Exhibit 10.42 to Form 10-K for the year ended December 31, 2016.
+
+(1)(2)10.17
+
+Form of Performance Restricted Stock Unit Award Agreement for Executive Officers under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1, 2021-December 31, 2023). Filed as Exhibit 10.30 to Form 10-K for the year ended December 31, 2020.
+
+(1)(2)10.18
+
+Form of Restricted Stock Unit Award Agreement for Executive Officers under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1, 2021-December 31, 2023). Filed as Exhibit 10.31 to Form 10-K for the year ended December 31, 2020.
+
+(1)(2)10.19
+
+Form of Performance Restricted Stock Unit Award Agreement for Executive Officers under U.S. Bancorp 2015 Stock Incentive Plan (used for grants made January 1"
+DV-A13,A,graphrag,PASS,gemini_strict,3,2,0.3446,1872,23,1731,0,1895,2174,27,2201,1.51,True,REPORTS_EVENT(dividend) of INTU,graph://REPORTS_EVENT(dividend) of INTU; graph://REPORTS_EVENT(*) of INTU; INTU_8-K_2026-05-20::c5; INTU_10-K_2025-09-03::c4; INTU_10-K_2025-09-03::c134; INTU_10-K_2025-09-03::c230; INTU_DEF14A_2025-11-26::c22; INTU_10-K_2025-09-03::c342,Intuit declared a quarterly cash dividend of $1.20 per share in its 2026 8-K.,$1.20/share,What quarterly cash dividend per share did Intuit declare in its 2026 8-K?,"Graph result — Intuit (INTU) 8-K events (dividend): [dividend] $1.20/share filed 2026-05-20 — , the Company also announced that the Board approved a cash dividend of $1.20 per share. The cash dividend will be paid on July 17, 2026 to shareholders of record as of the close o
+
+---
+
+Graph result — Intuit (INTU) 8-K events: [leadership] leadership change filed 2026-05-20; [dividend] $1.20/share filed 2026-05-20; [leadership] leadership change filed 2026-06-11
+
+---
+
+[INTU 8-K] .
+
+On May 20, 2026, the Company also announced that the Board approved a cash dividend of $1.20 per share. The cash dividend will be paid on July 17, 2026 to shareholders of record as of the close of business on July 9, 2026. Future declarations of dividends and the establishment of future record dates and payment dates are subject to the final determination of the Board. A copy of the press release announcing the cash dividend is furnished as Exhibit 99.01 to this Report.
+
+Forward-looking statements
+
+This report contains forward-looking statements, including expectations regarding the impact of the Plan on the Company's results of operations and workforce and the amount and timing of the costs related to the Plan. Because these forward-looking statements involve risks and uncertainties, there are important factors that could cause the Company's actual results to differ materially from the expectations expressed in the forward-looking statements. These risks and uncertainties may be amplified by the effects of global developments and conditions or events, including macroeconomic uncertainty and geopolitical conditions, which have caused significant global economic instability and uncertainty. Given these risks and uncertainties, persons regarding this communication are cautioned not to place any undue reliance on such forward-looking statements. These factors include, without limitation, the following: our ability
+
+---
+
+[INTU 10-K] held by non-affiliates of Intuit as of January 31, 2025, the last business day of our most recently completed second fiscal quarter, based on the closing price of $601.51 reported by the Nasdaq Global Select Market on that date, was $164.2 billion.
+
+The number of shares (in thousands) of Intuit voting common stock outstanding as of August 26, 2025 was 278,805.
+
+DOCUMENTS INCORPORATED BY REFERENCE
+
+Portions of the registrant's definitive proxy statement for its 2026 Annual Meeting of Stockholders are incorporated by reference in Part III of this Annual Report on Form 10-K.
+
+Table of Contents
+
+INTUIT INC.
+
+FISCAL 2025 FORM 10-K
+
+INDEX
+
+Page
+
+PART I
+
+ITEM 1:
+
+Business
+
+4
+
+ITEM 1A:
+
+Risk Factors
+
+15
+
+ITEM 1B:
+
+Unresolved Staff Comments
+
+29
+
+ITEM 1C:
+
+Cybersecurity
+
+29
+
+ITEM 2:
+
+Properties
+
+30
+
+ITEM 3:
+
+Legal Proceedings
+
+30
+
+ITEM 4:
+
+Mine Safety Disclosures
+
+30
+
+PART II
+
+ITEM 5:
+
+Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purch
+
+---
+
+[INTU 10-K] , RELATED
+
+STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY
+
+SECURITIES
+
+Market Information for Common Stock
+
+Intuit's common stock is quoted on the Nasdaq Global Select Market under the symbol ""INTU.""
+
+Stockholders
+
+As of August 26, 2025, we had 450 record holders and approximately 2,222,000 beneficial holders of our common stock.
+
+Dividends
+
+We declared cash dividends that totaled $4.16 per share of outstanding common stock, or $1.2 billion, during fiscal 2025 and $3.60 per share of outstanding common stock, or $1.0 billion, during fiscal 2024. In August 2025, our Board of Directors declared a quarterly cash dividend of $1.20 per share of outstanding common stock payable on October 17, 2025 to stockholders of record at the close of business on October 9, 2025. We currently expect to continue to pay comparable cash dividends on a quarterly basis in the future; however, future declarations of dividends and the establishment of future record dates and payment dates are subject to the final determination of our Board of Directors.
+
+Recent Sales of Unregistered Securities
+
+None.
+
+Purchases of Equity
+
+---
+
+[INTU 10-K] - - 1,968
+
+Balance at July 31, 2025 279,129 $ 3 $ 21,632 $ (21,543) $ (50) $ 19,668 $ 19,710
+
+See accompanying notes.
+
+Intuit Fiscal 2025 Form 10-K
+
+61
+
+Table of Contents
+
+INTUIT INC.
+
+CONSOLIDATED STATEMENTS OF CASH FLOWS
+
+Twelve Months Ended July 31,
+
+(In millions) 2025 2024 2023
+
+Cash flows from operating activities:
+
+Net income $ 3,869 $ 2,963 $ 2,384
+
+Adjustments to reconcile net income to net cash provided by operating activities:
+
+Depreciation 172 159 160
+
+Amortization of acquired intangible assets 637 630 646
+
+Non-cash operating lease cost 75 81 90
+
+Share-based compensation expense 1,968 1,940 1,712
+
+Deferred income taxes (435) (554) (628)
+
+Other 127 92 81
+
+Total adjustments 2,544 2,348 2,061
+
+Originations and purchases of notes receivable held for sale
+- (96) -
+
+Sales and principal repay
+
+---
+
+[INTU DEF14A] July 31, 2020, and that all dividends were reinvested. The comparisons in the graph below are based on historical data - with Intuit common stock prices based on the closing price on the dates indicated - and are not intended to forecast the possible future performance of Intuit's common stock.
+
+Comparison of 5 Year Cumulative Total Return*
+
+Among Intuit Inc., the S&P 500 Index, and Morgan Stanley Technology Index
+
+Intuit Inc.
+
+S&P 500
+
+Morgan Stanley Technology Index
+
+* $100 invested on 7/31/20 in stock or index, including reinvestment of dividends. Fiscal year ending July 31.
+
+Copyright © 2025 Standard and Poor's, a division of S&P Global. All rights reserved.
+
+Proxy Summary
+
+INTUIT 2026 Proxy Statement
+
+3
+
+Table of Contents
+
+Voting Roadmap
+
+1 Election of Directors
+
+Eleven of the Board's 13 current directors are standing for election to the Board at the Meeting. The nominees bring a wealth of experience and proven leadership across a range of industries. The slate of nominees reflects a balance between Intuit's commitment to thoughtful Board refreshment and the value of the experience that our longer-tenured directors bring.
+
+The Board recommends that you
+
+---
+
+[INTU 10-K] rate (range)
+4.29% - 5.39%
+
+4.94% - 5.55%
+
+1.59% - 4.74%
+
+Expected dividend yield (range)
+0.56% - 0.69%
+
+0.57% - 0.75%
+
+0.74% - 0.81%
+
+Intuit Fiscal 2025 Form 10-K
+
+89
+
+Table of Contents
+
+Share-Based Awards Available for Grant
+
+A summary of share-based awards available for grant under our plans for the fiscal periods indicated was as follows:
+
+(Shares in thousands) Shares
+
+Available
+
+for Grant
+
+Balance at July 31, 2022 26,260
+
+Restricted stock units granted (1)
+(12,098)
+
+Options granted (413)
+
+Share-based awards canceled/forfeited/expired (1)(2)
+5,277
+
+Balance at July 31, 2023 19,026
+
+Additional shares authorized 12,200
+
+Restricted stock units granted (1)
+(9,782)
+
+Options granted (326)
+
+Share-based awards canceled/forfeited/expired (1)(2)
+6,199
+
+Balance at July 31, 2024 27,317
+
+Restricted stock units granted (1)"
+DV-A14,A,graphrag,PASS,gemini_strict,3,2,0.2562,1877,25,1735,0,1902,2164,28,2192,1.864,True,REPORTS_EVENT(dividend) of MS,graph://REPORTS_EVENT(dividend) of MS; graph://REPORTS_EVENT(*) of MS; MS_DEF14A_2026-04-02::c234; MS_10-K_2026-02-19::c663; MS_DEF14A_2026-04-02::c158; MS_10-K_2026-02-19::c660; MS_DEF14A_2026-04-02::c241; MS_10-K_2026-02-19::c713,Morgan Stanley declared a quarterly common stock dividend of $1.15 per share in its 2026 8-K.,$1.15/share,What quarterly cash dividend per share did Morgan Stanley declare in its 2026 8-K?,"Graph result — Morgan Stanley (MS) 8-K events (dividend): [dividend] $1.15/share filed 2026-06-24 — any"") announced it will increase its quarterly common stock dividend to $1.15 per share from the current $1.00 per share, beginning with the common stock dividend expected to be de
+
+---
+
+Graph result — Morgan Stanley (MS) 8-K events: [dividend] $1.15/share filed 2026-06-24; [buyback] $20B filed 2026-06-24; [leadership] leadership change filed 2026-05-14; [leadership] leadership change filed 2026-06-05
+
+---
+
+[MS DEF14A] previously has been used as an indicator of performance for the ISG and was formalized as a strategic goal in January 2025. Morgan Stanley wallet share as of December 31, 2025 increased to 15.5% up 120bps from 14.3% in 2023. For peers that disclose results between multiple segments, assumptions have been made based on company disclosures. European peer results were translated to USD using average exchange rates for the appropriate period, sourced from Bloomberg.
+
+•
+
+Wealth Management pre-tax margin represents income before provision for income taxes as a percentage of net revenues.
+
+Compensation, Management Development and Succession Committee Report
+
+We, the Compensation, Management Development and Succession Committee of the Board of Directors of Morgan Stanley, have reviewed and discussed with management the Compensation Discussion and Analysis contained in this proxy statement. Based on such review and discussions, we have recommended to the Board that the Compensation Discussion and Analysis be included in this proxy statement and incorporated by reference into the Firm's Annual Report on Form 10-K for the year ended December 31, 2025, filed with the SEC.
+
+Respectfully submitted,
+
+Dennis M. Nally, Chair
+
+Thomas H. Glocer
+
+Erika H. James
+
+Rayford Wil
+
+---
+
+[MS 10-K] 6
+
+N
+3,000 100 100,000 October 2, 2025
+
+O
+52,000 1,000 25,000 January 15, 2027
+
+P
+40,000 1,000 25,000 October 15, 2027
+
+Q
+40,000 1,000 25,000 October 15, 2029
+
+1.All shares issued are non-cumulative. Each share has a par value of $0.01.
+
+2.Dividends on Series A are based on a floating rate, and dividends on Series C, L, O, P and Q are based on a fixed rate. Dividends on all other Series are based on a fixed-to-floating rate.
+
+3.Series A and C are redeemable at the redemption price plus accrued and unpaid dividends, regardless of whether dividends are actually declared, up to but excluding the date of redemption. All other Series are redeemable at the redemption price plus any declared and unpaid dividends, up to but excluding the date fixed for redemption.
+
+4.Series A and C are currently redeemable at the Firm's option, in whole or in part, from time to time. Series E, F, I, L, and N are
+
+---
+
+[MS DEF14A] 's leadership, for 2025:
+
+•
+
+The Firm achieved strong financial performance, with net revenues at a record $70.6 billion (up 14% year-over-year), net income applicable to Morgan Stanley of $16.9 billion, and earnings per share (EPS) also at a record of $10.21.
+
+•
+
+The Firm delivered pre-tax profit of $22.0 billion (up 25% year-over-year).
+
+•
+
+The Firm reported full-year ROTCE of 21.6% reflecting best-in-class returns and an efficiency ratio of 68%, exceeding our stated goal.
+
+•
+
+The standardized CET1 Ratio at December 31, 2025 was 15.0%, after accreting $8.1 billion of CET1 capital, and ended the year with over 300 basis points (bps) of excess capital.
+
+•
+
+The Firm continued to increase returns to shareholders as the quarterly dividend increased by $0.075 per share for a fourth year in a row to $1.00, with total dividends paid in 2025 of $6.1 billion.
+
+•
+
+The Firm achieved market capitalization of $282 billion (an increase of 39%), retaining its premium valuation among peers, and delivered total shareholder returns of 45%.
+
+In
+
+---
+
+[MS 10-K] The regulatory capital requirements referred to above, and certain covenants contained in various agreements governing indebtedness of the Firm, may restrict the Firm's ability to withdraw capital from its subsidiaries. The following table represents net assets of consolidated subsidiaries that may be restricted as to the payment of cash dividends and advances to the Parent Company.
+
+$ in millions At
+
+December 31,
+
+2025 At
+
+December 31,
+
+2024
+
+Restricted net assets $ 59,985 $ 49,914
+
+17. Total Equity
+
+Morgan Stanley Shareholders' Equity
+
+Preferred Stock
+
+Shares
+
+Outstanding Carrying Value
+
+$ in millions, except per share data At
+
+December 31,
+
+2025 Liquidation
+
+Preference
+
+per Share At
+
+December 31,
+
+2025 At
+
+December 31,
+
+2024
+
+Series
+
+A 44,000 $ 25,000 $ 1,100 $ 1,100
+
+C1
+519,882 1,000 408 408
+
+E 34,500 25,000 862 862
+
+F 34,000 25,000 850 850
+
+I 40,000 25,000 1,000 1,000
+
+K 40,000 25,000
+
+---
+
+[MS DEF14A] value of interest on cash dividend equivalents on the 2024 PSUs over the three-year deferral period. The aggregate grant date fair value of
+
+MORGAN STANLEY 2026 PROXY STATEMENT 93
+
+TABLE OF CONTENTS
+
+Compensation Matters
+
+2024 RSUs is based on the volume-weighted average price (VWAP) of the Firm's common stock on the grant date, and the aggregate grant date fair value of 2024 PSUs is based on the VWAP of the Firm's common stock on the grant date and the probable outcome of the performance conditions as of the grant date. The probable value of interest on cash dividend equivalents on the 2024 PSUs over the three-year deferral period is calculated using Bloomberg Dividend Forecast, assuming the interest accrues at the current short-term Treasury rate and is earned based on the probable outcome of the performance conditions as of the grant date. For purposes of this proxy statement, the probable outcome of the performance conditions as of the grant date for 2024 PSUs is the achievement of the target level of performance conditions. Based on actual Firm performance, participants can earn up to a maximum of 1.5 times the target number of 2024 PSUs granted, and as
+
+---
+
+[MS 10-K] 2,003 1,624
+
+Credit (1,404) (1,316) (990)
+
+Total $ 18,556 $ 16,763 $ 15,263
+
+1.Dividend income is included within equity contracts.
+
+The previous table summarizes realized and unrealized gains and losses primarily related to the Firm's Trading assets and liabilities, from derivative and non-derivative financial instruments, included in Trading revenues in the income statement. The Firm generally utilizes financial instruments across a variety of product types in connection with its market-making and related risk management strategies. The trading revenues presented in the table are not representative of the manner in which the Firm manages its business activities and are prepared in a manner similar to the presentation of trading revenues for regulatory reporting purposes.
+
+Investment Management Investments Revenues-Net Cumulative Unrealized Carried Interest
+
+$ in millions At
+
+December 31,
+
+2025 At
+
+December 31,
+
+2024
+
+Net cumulative unrealized performance-based fees at risk of reversing $ 926 $ 796
+
+The Firm's portion of net cumulative performance-based fees in the form of unrealized carried interest, for which the Firm is not obligated to pay compensation, is at risk of reversing when the returns in certain funds fall below specified performance targets. See Note"
+DV-B01,B,graphrag,PASS,gemini_strict,3,2,0.2299,206,37,54,0,243,221,42,263,1.525,True,"REPORTS_EVENT(buyback, value~4.1B) -> AUDITED_BY","graph://REPORTS_EVENT(buyback, value~4.1B) -> AUDITED_BY","FedEx (FDX) authorized a $4.1B share-repurchase program, filed on 2026-07-10. Its independent auditor is Ernst & Young LLP.",FedEx; Ernst & Young LLP,The company that authorized a $4.1B share-repurchase program (a 2026 8-K) — who is its auditor?,"Graph result — 8-K $4.1B share-repurchase authorization: FedEx (FDX) — $4.1B, filed 2026-07-10
+
+---
+
+Graph result — FedEx (FDX)'s independent auditor: Ernst & Young LLP"
+DV-B02,B,graphrag,PASS,gemini_strict,3,2,0.2972,213,41,61,0,254,227,45,272,1.216,True,"REPORTS_EVENT(buyback, value~5.0B) -> AUDITED_BY","graph://REPORTS_EVENT(buyback, value~5.0B) -> AUDITED_BY","Intuitive Surgical (ISRG) authorized a $5.0B share-repurchase program, filed on 2026-05-04. Its independent auditor is PricewaterhouseCoopers LLP.",Intuitive Surgical; PricewaterhouseCoopers LLP,The company that authorized a $5.0B share-repurchase program (a 2026 8-K) — who is its auditor?,"Graph result — 8-K $5.0B share-repurchase authorization: Intuitive Surgical (ISRG) — $5.0B, filed 2026-05-04
+
+---
+
+Graph result — Intuitive Surgical (ISRG)'s independent auditor: PricewaterhouseCoopers LLP"
+DV-B03,B,graphrag,PASS,gemini_strict,3,2,0.2676,209,38,57,0,247,223,40,263,1.747,True,"REPORTS_EVENT(buyback, value~2.0B) -> AUDITED_BY","graph://REPORTS_EVENT(buyback, value~2.0B) -> AUDITED_BY",PayPal (PYPL) authorized a $2.0B share-repurchase program in a 2026 8-K. Its independent auditor is PricewaterhouseCoopers LLP.,PayPal; PricewaterhouseCoopers LLP,The company that authorized a $2.0B share-repurchase program (a 2026 8-K) — who is its auditor?,"Graph result — 8-K $2.0B share-repurchase authorization: PayPal (PYPL) — $2.0B, filed 2026-05-15
+
+---
+
+Graph result — PayPal (PYPL)'s independent auditor: PricewaterhouseCoopers LLP"
+DV-C01,C,graphrag,PASS,gemini_strict,3,2,0.6134,216,80,79,0,296,213,76,289,1.172,True,AUDITED_BY(Deloitte & Touche LLP),graph://AUDITED_BY(Deloitte & Touche LLP),"The dataset companies audited by Deloitte & Touche LLP are: AMT, BA, BKNG, BLK, BMY, BRK.B, CMCSA, DE, DUK, GE, HON, LOW, MET, MS, MSFT, NEE, PG, SBUX, SCHW, SO, TMUS, UNH, UNP, UPS.","AMT, BA, BKNG, BLK, BMY, BRK.B, CMCSA, DE, DUK, GE, HON, LOW, MET, MS, MSFT, NEE, PG, SBUX, SCHW, SO, TMUS, UNH, UNP, UPS",List all dataset companies audited by Deloitte & Touche.,"Graph result — companies audited by Deloitte & Touche LLP: AMT, BA, BKNG, BLK, BMY, BRK.B, CMCSA, DE, DUK, GE, HON, LOW, MET, MS, MSFT, NEE, PG, SBUX, SCHW, SO, TMUS, UNH, UNP, UPS"
+DV-C02,C,graphrag,PASS,gemini_strict,3,2,0.0409,258,50,119,0,308,296,52,348,1.409,True,REPORTS_EVENT(buyback),graph://REPORTS_EVENT(buyback),"The companies that authorized a share-repurchase program via an 8-K are:
+
+*   ADBE
+*   NFLX
+*   ISRG
+*   PYPL
+*   ACN
+*   MS
+*   FDX","ACN, ADBE, FDX, ISRG, MS, NFLX, PYPL",Which companies authorized a share-repurchase program via an 8-K in the dataset?,"Graph result — companies that authorized a share buyback via 8-K: ADBE ($25B, 2026-04-21), NFLX ($25B, 2026-04-23), ISRG ($5.0B, 2026-05-04), PYPL ($2.0B, 2026-05-15), ACN ($2B, 2026-06-23), MS ($20B, 2026-06-24), FDX ($4.1B, 2026-07-10)"
+DV-C03,C,graphrag,PASS,gemini_strict,3,2,0.3364,145,16,14,0,161,149,16,165,1.102,True,IN_SECTOR(Energy),graph://IN_SECTOR(Energy),"The companies in the Energy sector are COP, CVX, and XOM.","COP, CVX, XOM",Which companies are in the Energy sector?,"Graph result — Energy sector companies: COP, CVX, XOM"
+DV-C04,C,graphrag,PASS,gemini_strict,3,2,0.5694,173,37,35,0,210,176,37,213,1.341,True,AUDITED_BY(Ernst & Young LLP) ∩ sector=Information Technology,graph://AUDITED_BY(Ernst & Young LLP) ∩ sector=Information Technology,"The Ernst & Young-audited companies in the Information Technology sector are AAPL, AMD, CRM, INTC, INTU, ORCL, PLTR, and TXN.","AAPL, AMD, CRM, INTC, INTU, ORCL, PLTR, TXN",Which Ernst & Young-audited companies are in the Information Technology sector?,"Graph result — Information Technology companies audited by Ernst & Young LLP: AAPL, AMD, CRM, INTC, INTU, ORCL, PLTR, TXN"
+DV-C05,C,graphrag,PASS,gemini_strict,3,2,0.4297,170,30,31,0,200,166,26,192,1.001,True,AUDITED_BY(Deloitte & Touche LLP) ∩ sector=Industrials,graph://AUDITED_BY(Deloitte & Touche LLP) ∩ sector=Industrials,"The Deloitte-audited companies in the Industrials sector are BA, DE, GE, HON, UNP, and UPS.","BA, DE, GE, HON, UNP, UPS",Which Deloitte-audited companies are in the Industrials sector?,"Graph result — Industrials companies audited by Deloitte & Touche LLP: BA, DE, GE, HON, UNP, UPS"

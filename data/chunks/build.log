@@ -1,0 +1,6 @@
+Total chunks: 86552  by form: {'8-K': 1470, 'DEF14A': 38568, '10-K': 46514}
+Embedding with sentence-transformers/all-MiniLM-L6-v2 (CPU) ...
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 5 files:  20%|██        | 1/5 [00:00<00:01,  2.03it/s]Fetching 5 files:  40%|████      | 2/5 [00:06<00:12,  4.02s/it]Fetching 5 files: 100%|██████████| 5/5 [00:06<00:00,  1.40s/it]
+Embeddings shape: (86552, 384)
+Wrote /home/yash/Documents/GraphRAG Data Round 3/round3-sp100/data/chunks/rag_index.faiss, chunks.pkl, embeddings.npy

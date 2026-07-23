@@ -1,0 +1,23 @@
+# Round 3 SP100 GraphRAG — pinned for reproducibility (Python 3.14)
+# Core
+python-dotenv==1.2.2
+requests==2.34.2
+numpy==2.5.1
+pandas==3.0.3
+tqdm==4.69.0
+tiktoken==0.13.0
+
+# Generation (Gemini)
+google-genai==2.12.1
+
+# Embeddings + Traditional-RAG index (same embedding model for RAG & GraphRAG:
+# sentence-transformers/all-MiniLM-L6-v2, 384-d)
+fastembed==0.8.0
+faiss-cpu==1.14.3
+
+# Evaluation (brief-mandated BERTScore config: bert-score==0.3.13,
+# model_type=roberta-large, rescale_with_baseline=True, idf=False)
+bert-score==0.3.13
+evaluate==0.4.6
+transformers==5.14.1
+torch==2.13.0
