@@ -7,6 +7,11 @@ pandas==3.0.3
 tqdm==4.69.0
 tiktoken==0.13.0
 
+# API server
+fastapi==0.139.2
+uvicorn[standard]==0.51.0
+pydantic==2.13.4
+
 # Generation (Gemini)
 google-genai==2.12.1
 
