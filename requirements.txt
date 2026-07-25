@@ -12,6 +12,11 @@ fastapi==0.139.2
 uvicorn[standard]==0.51.0
 pydantic==2.13.4
 
+# HuggingFace Spaces entrypoint (app.py). The Docker SDK is a paid Spaces
+# feature, so we deploy on the free Gradio SDK and mount our FastAPI app inside
+# it -- every REST route keeps its path; Gradio only adds the /ui page.
+gradio==6.20.0
+
 # Generation (Gemini)
 google-genai==2.12.1
 

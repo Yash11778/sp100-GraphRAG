@@ -52,24 +52,39 @@ def compare(req: QueryRequest):
         "basic_rag": _pipeline_executor.submit(pipeline2, req.question),
         "graphrag":  _pipeline_executor.submit(pipeline3, req.question),
     }
+    # One pipeline failing must not blank the whole comparison. A hosted demo hits
+    # this for real: a suspended TigerGraph workspace takes out GraphRAG, and
+    # returning 500 would hide the two pipelines that DID answer. Each failure is
+    # reported in place, with its own status, so the response stays comparable.
     results = {}
     for name, fut in futures.items():
         try:
             results[name] = fut.result(timeout=120)
         except Exception as e:
-            return JSONResponse(status_code=500,
-                                content={"detail": f"{name} pipeline failed: {e}"})
+            msg = str(e)
+            status = "workspace_suspended" if "SUSPENDED" in msg.upper() else "pipeline_error"
+            results[name] = {
+                "pipeline": name, "answer": "", "status": status, "error": msg,
+                "prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0,
+                "cost_usd": 0.0, "latency_s": 0,
+            }
 
     p1, p2, p3 = results["llm_only"], results["basic_rag"], results["graphrag"]
-    basic_rag_ok = p2.get("status") != "index_unavailable"
+
+    def _ok(p):
+        return p.get("status") in (None, "ok") and p.get("total_tokens", 0) > 0
+
+    # A ratio is only meaningful when BOTH sides actually ran.
+    comparable = _ok(p2) and _ok(p3)
     token_reduction = round((1 - p3["total_tokens"] / max(p2["total_tokens"], 1)) * 100, 1) \
-        if basic_rag_ok else None
+        if comparable else None
     cost_reduction = round((1 - p3["cost_usd"] / max(p2["cost_usd"], 1e-9)) * 100, 1) \
-        if basic_rag_ok else None
+        if comparable else None
 
     out = {
         "llm_only": p1, "basic_rag": p2, "graphrag": p3,
-        "graphrag_status": "ok" if p3.get("graph_used") else "vector_only",
+        "graphrag_status": (p3.get("status") if not _ok(p3)
+                            else "ok" if p3.get("graph_used") else "vector_only"),
         "token_reduction_pct": token_reduction,
         "cost_reduction_pct": cost_reduction,
     }
