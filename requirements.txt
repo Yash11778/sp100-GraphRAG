@@ -16,6 +16,10 @@ pydantic==2.13.4
 # feature, so we deploy on the free Gradio SDK and mount our FastAPI app inside
 # it -- every REST route keeps its path; Gradio only adds the /ui page.
 gradio==6.20.0
+# Required by ZeroGPU-hardware Spaces. This service is CPU-only (no @spaces.GPU
+# function anywhere) -- the package is present so the ZeroGPU runtime loads, not
+# because we allocate a GPU.
+spaces==0.44.1
 
 # Generation (Gemini)
 google-genai==2.12.1
