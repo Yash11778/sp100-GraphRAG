@@ -28,6 +28,10 @@ API's own usage metadata) at 4.1× the strict pass rate.** Ablation: disabling
 the graph drops GraphRAG to 22% while RAISING tokens ~49% — the graph is
 simultaneously the accuracy and the efficiency mechanism.
 
+> **Start here: [AUDIT.md](AUDIT.md)** — we audited this submission the way we
+> expected a hostile reviewer to, and found five things, four of which count
+> against us. Every one is quantified there with a command to reproduce it.
+
 ### ⚠ Adjusted result — please read this table too
 
 11 of the 50 held-out questions are answered by entity/topic extraction whose

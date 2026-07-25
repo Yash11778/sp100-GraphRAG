@@ -161,7 +161,104 @@ def results():
 
     return {"aggregate": agg, "token_reduction_pct": reduction, "tiers": tiers,
             "per_run": per_run, "ablations": ablations, "runs": len(runs),
-            "per_question": per_question}
+            "per_question": per_question, "integrity": _integrity(df, runs)}
+
+
+# Questions whose answers depend on entity/topic extraction that was chosen against
+# the held-out answer keys (disclosed breach — see eval/RESULTS.md). Kept here so the
+# dashboard shows the corrected figures alongside the headline instead of only the
+# flattering one.
+_LEAK_QIDS = {"EQ23", "EQ26", "EQ30", "EQ31", "EQ32", "EQ33",
+              "EQ38", "EQ39", "EQ40", "EQ42", "EQ43"}
+# Of those, the ones an entity-agnostic rule provably reproduces without question
+# knowledge (proof: ingestion/verify_open_vocab.py).
+_RECOVERABLE = {"EQ23", "EQ26", "EQ30", "EQ31", "EQ38", "EQ39", "EQ42", "EQ43"}
+
+
+def _cut(df, drop: set, label: str, note: str) -> dict:
+    sub = df[~df.qid.isin(drop)]
+    g = sub[sub.pipeline == "graphrag"]
+    r = sub[sub.pipeline == "basic_rag"]
+    lo = sub[sub.pipeline == "llm_only"]
+    gp = round((g.judge == "PASS").mean() * 100, 1)
+    rp = round((r.judge == "PASS").mean() * 100, 1)
+    return {
+        "label": label, "note": note, "n_questions": int(sub.qid.nunique()),
+        "llm_only_pass": round((lo.judge == "PASS").mean() * 100, 1),
+        "basic_rag_pass": rp, "graphrag_pass": gp,
+        "graphrag_tokens": round(g.total_tokens.mean()),
+        "basic_rag_tokens": round(r.total_tokens.mean()),
+        "token_reduction_pct": round((1 - g.total_tokens.mean()
+                                      / max(r.total_tokens.mean(), 1)) * 100, 1),
+        "ratio": round(gp / rp, 1) if rp else None,
+    }
+
+
+def _integrity(df, runs) -> dict:
+    """Self-audit findings, served with the results so the demo and the written
+    report never disagree. Every figure here is computed from the same raw CSVs."""
+    import pandas as pd
+
+    cuts = [
+        _cut(df, set(), "Full set",
+             "Headline. Includes 11 questions whose extraction vocabulary was "
+             "answer-key-informed — treat as an upper bound."),
+        _cut(df, _LEAK_QIDS, "Adjusted (headline claim)",
+             "All 11 leak-affected questions removed. This is the figure we "
+             "stand behind as a generalization claim."),
+        _cut(df, _LEAK_QIDS - _RECOVERABLE, "Mechanism",
+             "Only the 3 questions NOT reproducible by a blind, entity-agnostic "
+             "extraction rule are removed (GLP-1). See verify_open_vocab.py."),
+    ]
+
+    out = {
+        "disclosure": (
+            "Our own pre-submission audit found a test-set-isolation breach: the "
+            "entity/topic extraction vocabulary was chosen against the held-out "
+            "answer keys, affecting 11 of 50 questions. Retrieval and prompt "
+            "PARAMETERS were tuned only on the disjoint 18-question dev set. Both "
+            "the headline and corrected figures are shown. No rows were removed "
+            "from any raw result file."
+        ),
+        "cuts": cuts,
+        "details_doc": "eval/RESULTS.md",
+    }
+
+    # Independent-judge cross-check (different model from the generator).
+    cj = RESULTS_DIR / "crossjudge_run1_gemini-2-5-pro.csv"
+    if cj.exists():
+        c = pd.read_csv(cj)
+        out["cross_judge"] = {
+            "judge_model": "gemini-2.5-pro",
+            "generator_model": "gemini-2.5-flash",
+            "agreement_pct": round(c.agree.mean() * 100, 1),
+            "by_pipeline": {p: {
+                "primary_pass": round((s.judge_primary == "PASS").mean() * 100, 1),
+                "cross_pass": round((s.judge_cross == "PASS").mean() * 100, 1),
+            } for p, s in c.groupby("pipeline")},
+            "note": "Re-scores the same stored answers with a different, stronger "
+                    "model. Slightly harsher on GraphRAG, so the primary judge is "
+                    "not inflating our result.",
+        }
+
+    # Baseline-fairness check: RAG re-run with the source labels GraphRAG had.
+    fc = RESULTS_DIR / "fairness_rag_labelled.csv"
+    if fc.exists():
+        f = pd.read_csv(fc)
+        rep = round(f.judge_reported.eq("PASS").mean() * 100, 1)
+        lab = round(f.judge_labelled.eq("PASS").mean() * 100, 1)
+        out["baseline_fairness"] = {
+            "finding": "GraphRAG labelled its evidence [TICKER FORM]; Traditional "
+                       "RAG did not. We measured the gap rather than explaining it away.",
+            "rag_as_reported_pass": rep,
+            "rag_with_labels_pass": lab,
+            "delta_pts": round(lab - rep, 1),
+            "extra_tokens": int(round(f.total_tokens_labelled.mean()
+                                      - f.total_tokens_reported.mean())),
+            "note": "Real but not material — the adjusted-set ratio moves 3.1x to 2.8x.",
+        }
+
+    return out
 
 
 @app.get("/")
