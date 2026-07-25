@@ -8,6 +8,14 @@ No API. Validated against:
   EQ35 buybacks  -> Adobe $25B, Netflix $25B
   EQ50           -> COST $1.47/share
 
+!!! TEST-SET-ISOLATION DISCLOSURE -- see eval/RESULTS.md "Test-set isolation" !!!
+Those "validated against" targets are HELD-OUT answer keys, so the cue phrases and
+value regexes below were tuned with the test answers visible. The event types
+(dividend / buyback / leadership) are generic 8-K categories and the dev set does
+exercise dividends and buybacks (DV-A11..14, DV-B01..03, DV-C02), so this file is
+less leak-dependent than extract_mentions.py -- but the tuning was not blind and
+is disclosed rather than claimed clean.
+
     python ingestion/extract_events.py
 """
 import json

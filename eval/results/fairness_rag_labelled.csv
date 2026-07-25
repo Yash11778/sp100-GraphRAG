@@ -1,0 +1,117 @@
+qid,tier,judge_labelled,judge_reported,ctx_tokens_labelled,ctx_tokens_reported,total_tokens_labelled,total_tokens_reported,latency_s,answer,ground_truth,question
+EQ01,A,PASS,PASS,2112,2054,2207,2149,1.182,"Apple's total net sales for fiscal year 2025 were $416,161 million.","$416,161 million (approximately $416.2 billion)",What were Apple's total net sales for fiscal year 2025?
+EQ02,A,FAIL,FAIL,2116,2056,2210,2151,1.035,NVIDIA's total revenue for fiscal year 2026 was 100.0%.,"$215,938 million (approximately $215.9 billion)",What was NVIDIA's total revenue for fiscal year 2026?
+EQ03,A,PASS,FAIL,2110,2059,2223,2172,1.112,"JPMorgan Chase's net income for the fiscal year ended December 31, 2025, was $57,048 million.","$57,048 million (approximately $57.0 billion), down 2% year over year","What was JPMorgan Chase's net income for the fiscal year ended December 31, 2025?"
+EQ04,A,FAIL,FAIL,2113,2061,2216,2191,1.152,"ExxonMobil's total consolidated revenues and other income for FY2025 were 344,582 million dollars.","$332,238 million (approximately $332.2 billion)",What were ExxonMobil's total revenues and other income for FY2025?
+EQ05,A,PASS,PASS,2105,2055,2199,2149,1.199,Coca-Cola's net operating revenues for FY2025 were $47.9 billion.,"$47,941 million (approximately $47.9 billion)",What were Coca-Cola's net operating revenues for FY2025?
+EQ06,A,PASS,PASS,2116,2059,2207,2148,1.095,"Microsoft's fiscal year 2025 ends on June 30, 2025.","June 30, 2025",On what date does Microsoft's FY2025 end?
+EQ07,A,PASS,PASS,2119,2064,2212,2155,1.215,Andrew R. Jassy has served as President and Chief Executive Officer of Amazon since July 2021.,Andrew R. Jassy,Who is Amazon's Chief Executive Officer?
+EQ08,A,FAIL,FAIL,2122,2061,2216,2155,0.729,The provided context does not state which cloud provider Netflix relies on to operate its streaming service.,Amazon Web Services (AWS),Netflix relies on which cloud provider to operate its streaming service?
+EQ09,B,FAIL,FAIL,2110,2058,2247,2186,1.261,"The context provided does not state that John Ternus was appointed as CEO by any of the listed companies. Therefore, the total net sales in FY2025 for a company that appointed John Ternus as CEO cannot be determined from the given information.","Apple; $416,161 million (approximately $416.2 billion)",The company that appointed John Ternus as CEO — what were its total net sales in FY2025?
+EQ10,B,FAIL,FAIL,2116,2063,2222,2166,0.806,The context provided does not state who the independent auditor is for the company that agreed to acquire Apogee Therapeutics.,AbbVie; Ernst & Young LLP,The company that agreed to acquire Apogee Therapeutics — who is its independent auditor?
+EQ11,B,FAIL,FAIL,2112,2059,2220,2167,1.122,"Based on the context provided, no other company besides Netflix authorized a $25 billion share repurchase program in 2026.",Adobe,"Besides Netflix, which company authorized a $25B share-repurchase program in 2026?"
+EQ12,B,FAIL,FAIL,2111,2060,2232,2172,1.118,"The provided context does not contain information about a 50/50 joint venture between any company and BT Group plc, nor does it state who the auditor is for any such company.",Verizon; Ernst & Young LLP,The company that formed a 50/50 joint venture with BT Group plc — who is its auditor?
+EQ13,B,FAIL,FAIL,2108,2059,2227,2197,1.141,"The provided context does not contain information about ExxonMobil's fiscal-year net income. Therefore, a comparison between JPMorgan Chase and ExxonMobil cannot be made using the given context.",JPMorgan Chase ($57.0B vs ExxonMobil $28.8B),Which had the higher fiscal-year net income: JPMorgan Chase or ExxonMobil?
+EQ14,B,FAIL,FAIL,2111,2061,2221,2176,0.81,"The provided context does not contain information about Apple's fiscal-year revenue. Therefore, it is not possible to determine which company had higher fiscal-year revenue between Walmart and Apple.",Walmart ($713.2B vs Apple $416.2B),Which had the higher fiscal-year revenue: Walmart or Apple?
+EQ15,B,FAIL,FAIL,2114,2058,2288,2232,1.021,"Based on the context provided:
+
+*   **NVIDIA** spent 8.6% of its revenue on Research and development for the fiscal year ended January 25, 2026.
+*   The context does not provide a specific dollar amount or percentage of revenue for Apple's R&D spending in its latest fiscal year.
+
+Therefore, it is not possible to definitively say which company spent more on R&D in its latest fiscal year based solely on the provided context.",Apple ($34.5B vs NVIDIA $18.5B),Which spent more on R&D in its latest fiscal year: Apple or NVIDIA?
+EQ16,B,FAIL,FAIL,2111,2063,2236,2256,0.854,"The context provided does not state that Jay Hoag was appointed as Chairman in 2026, nor does it mention any share repurchase authorizations by Netflix in 2026.",Netflix; $25 billion,The company that appointed Jay Hoag as Chairman in 2026 — what share-repurchase amount did it authorize that year?
+EQ17,B,FAIL,FAIL,2118,2061,2233,2203,1.316,"The context does not state who Amgen's incoming CFO is in 2026, nor does it state who Amgen's auditor is.",Thomas Dittrich; Ernst & Young LLP,"Amgen named an incoming CFO in 2026 — who is he, and who is Amgen's auditor?"
+EQ18,B,FAIL,FAIL,1905,1849,2026,1972,0.856,"The provided context does not state who Chevron's departing Chief Legal Officer is.
+
+Chevron's auditor is PricewaterhouseCoopers LLP (""PwC"").",R. Hewitt Pate; PricewaterhouseCoopers LLP,"Chevron's departing Chief Legal Officer (per its 2026 8-K) is whom, and who is Chevron's auditor?"
+EQ19,B,FAIL,PASS,2114,2064,2232,2165,0.881,"AMD names the following two companies as its principal competitors:
+
+*   **Data Center Segment:** Altera (for FPGA and adaptive SoC server products)
+*   **Discrete Graphics:** Nvidia",Intel and Nvidia,AMD names which two companies as its principal competitors in Data Center and discrete graphics?
+EQ20,B,FAIL,FAIL,2113,2062,2231,2383,1.13,"The following Deloitte-audited companies had a fiscal year ending June 30, 2025:
+
+*   **PG**
+*   **MSFT**",Microsoft,"Which Deloitte-audited company had a fiscal year ending June 30, 2025?"
+EQ21,B,PASS,PASS,2117,2063,2248,2191,1.126,"In Apple's April 2026 8-K, John Ternus was appointed Chief Executive Officer. Tim Cook will transition from his role as Chief Executive Officer to Executive Chair of Apple's Board of Directors.",John Ternus appointed CEO; Tim Cook moves to Executive Chair of the Board,"In Apple's April 2026 8-K, who was appointed CEO, and what role will Tim Cook move into?"
+EQ22,B,FAIL,FAIL,2112,2062,2254,2210,1.302,"The provided context does not contain information about AMD's new revolving credit facility from a May 2026 8-K, nor does it name the administrative agent for any of AMD's revolving credit facilities or the agent on any replaced facility.","New: JPMorgan Chase Bank, N.A.; prior (Apr 2022): Wells Fargo Bank, N.A.","AMD's new revolving credit facility (May 2026 8-K) names which bank as administrative agent, and which was agent on the facility it replaced?"
+EQ23,B,FAIL,FAIL,2114,2062,2227,2186,1.172,The company that names TSMC as a foundry is Intel Corporation. The context does not provide Intel Corporation's fiscal-year revenue.,"NVIDIA ($215.9B; vs AMD, AVGO, INTC, QCOM)","Among the companies that name TSMC as a foundry, which one had the highest fiscal-year revenue?"
+EQ24,B,FAIL,FAIL,2111,2061,2223,2174,1.114,The context provided does not contain information about Caterpillar raising its quarterly dividend in June 2026 or the new amount.,"+$0.12, from $1.51 to $1.63/share","By how much did Caterpillar raise its quarterly dividend (June 2026 8-K), and to what new amount?"
+EQ25,C,FAIL,FAIL,2113,2061,2388,2173,1.828,"Here are the S&P-100 companies in the dataset audited by KPMG:
+
+*   **Pfizer (PFE)**: KPMG LLP (KPMG) was selected as the firm for 2026.
+*   **General Dynamics (GD)**: KPMG LLP was the independent auditor for 2025, and shareholders approved KPMG LLP as the independent auditor for 2026.
+*   **Visa (V)**: KPMG LLP is overseen by the Audit Committee.
+*   **Emerson Electric Co. (EMR)**: KPMG was reappointed as the independent registered public accounting firm for fiscal 2026.
+*   **PepsiCo (PEP)**: KPMG provided services for fiscal years 2025 and 2024.
+*   **Wells Fargo & Company (WFC)**: KPMG was retained as the independent auditor for 2026.","ACN, ADBE, BNY, COST, EMR, GD, HD, PEP, PFE, V, WFC (11)",List all S&P-100 companies in the dataset audited by KPMG.
+EQ26,C,PASS,FAIL,2111,2060,2365,2231,1.574,"Based on the provided context, the following companies name TSMC as a foundry/manufacturing partner:
+
+*   **AMD**: Utilizes Taiwan Semiconductor Manufacturing Company Limited (TSMC) for the production of wafers for their HPC, FPGA, and adaptive SoC products, and for the production of their ICs in the form of programmable logic devices.
+*   **AVGO**: Outsourced a majority of their front-end wafer manufacturing operations to external foundries, including Taiwan Semiconductor Manufacturing Company Limited (""TSMC""). They also use TSMC for a significant majority of their assembly and test operations.
+*   **INTC**: States that some of their most advanced current and future products are or will be either exclusively manufactured by TSMC or reliant upon critical components, including various compute die, manufactured by TSMC.","AMD, AVGO, INTC, NVDA, QCOM",Which companies in the dataset name TSMC as a foundry/manufacturing partner?
+EQ27,C,FAIL,FAIL,2116,2063,2232,2201,1.123,"Based on the context provided, only **AMZN** lists Indra K. Nooyi as a member of its board. The other companies do not mention her.","Amazon (AMZN), Honeywell (HON)",Two companies list Indra Nooyi as a member of their board — which two?
+EQ28,C,PASS,FAIL,2115,2062,2214,2161,1.016,"Ellen Kullman serves on the boards of Amgen Inc. and Goldman Sachs Group, Inc.","Amgen (AMGN), Goldman Sachs (GS)",Ellen Kullman serves on the boards of which two dataset companies?
+EQ29,C,PASS,PASS,1930,1871,2035,1970,1.019,F. William McNabb III is a director at UnitedHealth Group (UNH) and International Business Machines Corp. (IBM).,"IBM, UnitedHealth (UNH)",F. William McNabb III is a director at which two dataset companies?
+EQ30,C,FAIL,FAIL,2111,2064,2304,2168,1.71,"Based on the context provided, the following energy-sector company discusses climate change as a risk factor in its 10-K:
+
+*   **ConocoPhillips (COP)**: The [COP 10-K] explicitly references ""Item 1A. Risk Factors-Existing and future laws, regulations and internal initiatives relating to global climate changes, such as limitations on GHG emissions may impact or limit our business plans, result in significant expenditures, promote alternative uses of energy or reduce demand for our products and Note 9 for information on climate change litigation.""","Chevron (CVX), ExxonMobil (XOM), ConocoPhillips (COP)",Which Energy-sector companies discuss climate change as a risk factor in their 10-K?
+EQ31,C,FAIL,FAIL,2113,2062,2230,2145,0.865,"The following Utilities-sector companies address climate change in their 10-K:
+
+*   **Duke Energy Corporation (DUK)**
+*   **NextEra Energy, Inc. (NEE)**","Duke (DUK), NextEra (NEE), Southern (SO)",Which Utilities-sector companies address climate change in their 10-K?
+EQ32,C,FAIL,FAIL,2115,2064,2329,2371,1.628,"The following health-care companies mention weight-loss/obesity (GLP-1) drugs in their 10-K:
+
+*   **Eli Lilly and Company (LLY)**: Mentions ""obesity medicines,"" ""Lilly obesity medicines,"" ""Mounjaro and Zepbound"" (incretin medicines), and ""orforglipron for the treatment of obesity.""
+*   **Pfizer Inc. (PFE)**: Mentions ""YP05002, a small molecule glucagon-like peptide 1 (GLP-1) receptor agonist currently in Phase 1 development for chronic weight management.""","ABBV, AMGN, CVS, ISRG, LLY, MDT, MRK, PFE",Which Health-Care companies mention weight-loss / obesity (GLP-1) drugs in their 10-K?
+EQ33,C,FAIL,FAIL,2113,2061,2226,2176,1.209,The Coca-Cola Company (KO) is the only consumer company that flags GLP-1 / weight-loss drugs as a business risk.,"KO, MCD, MDLZ, PEP, SBUX","Besides health-care companies, which consumer companies flag GLP-1 / weight-loss drugs as a business risk?"
+EQ34,C,FAIL,FAIL,2113,2060,2256,2160,1.458,"Based on the provided context, the following company declared a cash dividend via an 8-K:
+
+*   **COSTCO WHOLESALE CORPORATION (COST)** declared a quarterly cash dividend of $1.47 per share on July 7, 2026, as stated in its 8-K filing.","AIG ($0.50), Caterpillar ($1.63), Costco ($1.47), Oracle ($1,625 pref.+common), P&G",Which companies declared a cash dividend via an 8-K in this dataset?
+EQ35,C,FAIL,FAIL,2113,2062,2244,2192,0.965,"The context provided does not state which companies authorized a $25 billion share-repurchase program via an 8-K. However, it does state that Verizon's Board of Directors authorized a share repurchase program for up to $25 billion of common stock.","Adobe, Netflix",Which companies authorized a $25 billion share-repurchase program via an 8-K?
+EQ36,C,FAIL,FAIL,2112,2063,2225,2179,0.988,"Based on the context provided, the following KPMG-audited company is in the Consumer Staples sector:
+
+*   **PepsiCo** (PEP)","PepsiCo (PEP), Costco (COST)",Which KPMG-audited companies are in the Consumer Staples sector?
+EQ37,C,FAIL,FAIL,2111,2060,2270,2186,1.357,"Based on the context provided, the following KPMG-audited companies are in the Financials sector:
+
+*   **BNY** (implied by ""financial services industry in general and BNY's business in particular"")
+*   **Citi** (implied by ""breadth and complexity of Citi's business and its global footprint"")
+*   **Wells Fargo & Company**","BNY Mellon (BNY), Wells Fargo (WFC); + Visa (V) if classed Financials",Which KPMG-audited companies are in the Financials sector?
+EQ38,C,FAIL,PASS,2115,2064,2226,2198,1.024,The provided context does not state which companies that name TSMC as a foundry are audited by Ernst & Young.,"AMD, INTC","Among the companies that name TSMC as a foundry, which are audited by Ernst & Young?"
+EQ39,C,FAIL,FAIL,2110,2057,2219,2182,1.098,The provided context does not name TSMC as a foundry for any of the listed companies.,"AVGO, NVDA, QCOM","Among the companies that name TSMC as a foundry, which are audited by PricewaterhouseCoopers?"
+EQ40,C,FAIL,FAIL,2114,2064,2261,2191,0.92,"Based on the context provided, the following health-care companies mention obesity/weight-loss drugs:
+
+*   **Eli Lilly and Company (LLY)**
+*   **Pfizer Inc. (PFE)**
+
+The provided context does not state which of these companies are audited by Ernst & Young.","ABBV, AMGN, CVS, LLY","Among Health-Care companies that mention obesity/weight-loss drugs, which are audited by Ernst & Young?"
+EQ41,C,FAIL,FAIL,2112,2061,2323,2203,1.471,"Based on the context provided, the following Deloitte-audited companies are in the Health-Care sector:
+
+*   **MetLife, Inc.** (MET DEF14A) - The context mentions ""the operating health, insurance, and reinsurance companies' responsibility for preparing audited consolidated financial statements"" and ""the complex, often overlapping regulations to which the Company and its subsidiaries are subject in each of those jurisdictions.""
+*   **UnitedHealth Group** (UNH DEF14A) - The context refers to ""the breadth and complexity of the Company's operations"" and the Audit and Finance Committee's evaluation of Deloitte's services.","Bristol-Myers Squibb (BMY), UnitedHealth (UNH)",Which Deloitte-audited companies are in the Health-Care sector?
+EQ42,C,FAIL,FAIL,1940,1887,2070,2068,0.914,"Based on the provided context, the semiconductor and networking companies that explicitly name NVIDIA as a competitor are:
+
+*   **Advanced Micro Devices, Inc. (AMD)**
+*   **Intel Corporation (Intel)**
+*   **QUALCOMM Incorporated**","AMD, CSCO, INTC, QCOM","Among the dataset's semiconductor and networking companies, which explicitly name NVIDIA as a competitor?"
+EQ43,C,FAIL,FAIL,2116,2065,2272,2201,0.912,"Based on the context provided, none of the companies that name NVIDIA as a competitor are stated to be audited by PricewaterhouseCoopers.
+
+The context states that PricewaterhouseCoopers LLP (PwC) is the independent registered public accounting firm for NVIDIA for Fiscal 2026 and has served as NVIDIA's auditor since 2004.","CSCO, QCOM","Among companies that name NVIDIA as a competitor, which are audited by PricewaterhouseCoopers?"
+EQ44,C,FAIL,FAIL,2112,2062,2335,2251,1.609,"Based on the provided context:
+
+*   **PwC** audits American Express (AXP) and JPMorgan Chase & Co. (JPM).
+*   **KPMG** audits Pfizer (PFE) and previously employed a director who served at KPMG for over 35 years, including as Audit Engagement Partner or Global Senior Relationship Partner for clients in various industries, including financial services and technology, and was Managing Partner of KPMG's Bay Area and Northwest region (PYPL).
+*   **Deloitte & Touche LLP** audits Microsoft (MSFT).
+*   The context does not explicitly state which Big Four firm audits AIG, The Coca-Cola Company (KO), or General Electric (GE).","Ernst & Young 35, PwC 29, Deloitte 25, KPMG 11",How many dataset companies does each Big Four firm audit?
+EQ45,D,FAIL,FAIL,2115,2061,2263,2207,1.223,"The provided context does not contain information about Amgen's CFO transition in 2026, nor does it mention an outgoing or incoming CFO for Amgen. It only states that Robert A. Bradway served as Executive Vice President and CFO of Amgen Inc. from 2007-2010.","Peter H. Griffith retires as CFO Aug 31, 2026 (EVP until Jan 31, 2027); Thomas Dittrich effective Sept 1, 2026","Amgen's CFO transition (2026): when does the outgoing CFO retire, and when does the incoming CFO start?"
+EQ46,D,FAIL,FAIL,2116,2060,2331,2319,1.353,"Here are the 2026 buyback authorizations in chronological order:
+
+1. **Morgan Stanley:** On July 1, 2025, the Board of Directors reauthorized a multi-year repurchase authorization of up to $20 billion of outstanding common stock, beginning in the third quarter of 2025.
+2. **Adobe:** On April 21, 2026, Adobe announced that its Board of Directors approved a new stock repurchase program granting Adobe authority to repurchase up to $25 billion in common stock through April 30, 2030.",Adobe (Apr 21) -> Netflix (Apr 22) -> Accenture (Jun 23) -> Morgan Stanley (Jun 24),"Put these 2026 buyback authorizations in chronological order: Adobe $25B, Netflix +$25B, Accenture +$2B, Morgan Stanley $20B."
+EQ47,D,FAIL,FAIL,2108,2049,2268,2219,1.384,"The context provided only mentions one 8-K filing in April 2026, which was filed on April 30, 2026. This 8-K reported the press release issued by Apple Inc. on April 30, 2026. The context does not state any 8-K filing on April 20, 2026.",Apr 20 = CEO transition (Ternus); Apr 30 = Q2 FY26 earnings / results of operations,"Apple filed two 8-Ks in April 2026 (Apr 20, Apr 30). What event does each report?"
+EQ48,D,FAIL,FAIL,1931,1881,2086,2048,1.287,"The company that expanded a productivity/restructuring program on April 30, 2026 is **Colgate-Palmolive Company**.
+
+The context provided does not state the name of its auditor.
+
+The revised total pre-tax charge range is **$350 million to $550 million**.",Colgate-Palmolive; PwC; revised to $350M-$550M,"The company that expanded a productivity/restructuring program on April 30, 2026 — name it, its auditor, and the revised total pre-tax charge range."
+EQ49,D,FAIL,FAIL,2109,2060,2221,2173,1.084,Cisco's May 2026 restructuring 8-K does not mention which growth areas are funded. Cisco's auditor is PwC.,"Silicon, optics, security, and AI; PwC","Cisco's May 2026 restructuring 8-K funds which growth areas, and who is Cisco's auditor?"
+EQ50,D,FAIL,FAIL,2116,2062,2225,2218,1.116,The context provided does not contain information about Costco's quarterly cash dividend per share declared in its July 2026 8-K.,$1.47 per share,What quarterly cash dividend per share did Costco declare in its July 2026 8-K?

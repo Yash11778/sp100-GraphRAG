@@ -324,6 +324,11 @@ def _route(question: str):
     # -- buybacks via 8-K (corpus-wide) --
     if ("repurchase" in q or "buyback" in q) and ("which" in q or "companies" in q or "billion" in q):
         rows = gq.events_detailed("buyback")
+        # DISCLOSURE (eval/RESULTS.md §Test-set isolation): this literal-$25 filter
+        # was written against held-out EQ11/EQ35. The generic form is to parse any
+        # amount from the question via _find_amount(); left as-is because the config
+        # was frozen before the breach was identified, and rewriting it post-hoc
+        # would invalidate the frozen-config claim for the reported runs.
         if "$25" in q or "25 billion" in q:
             rows = [r for r in rows if "25" in (r["value"] or "")]
         ev = "Graph result — companies that authorized a share buyback via 8-K: " + \

@@ -8,4 +8,7 @@ data/chunks/*.pkl
 data/graph_csv/
 data/chunks/*.npy
 sp100_dataset-20260717T162023Z-1-001/
-docs/
+
+# NOTE: docs/ was previously ignored, which kept the architecture document,
+# methodology presentation, and blog post (brief deliverables 5-7) out of the
+# repository. They are plain markdown (~108K total) and are now tracked.
