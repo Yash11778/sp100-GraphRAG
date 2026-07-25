@@ -13,7 +13,9 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent.parent.resolve()))
 from dotenv import dotenv_values  # noqa: E402
 
-_ENV = dotenv_values(Path(__file__).parent.parent / ".env")
+# Local dev reads a .env file; hosted deploys (Render, etc.) inject real
+# environment variables. Merge both, with real env vars taking precedence.
+_ENV = {**dotenv_values(Path(__file__).parent.parent / ".env"), **os.environ}
 HOST = _ENV["TG_HOST"].rstrip("/")
 SECRET = _ENV["TG_SECRET"]
 GRAPH = _ENV.get("TG_GRAPH", "sp100")
