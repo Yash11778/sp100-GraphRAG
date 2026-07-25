@@ -1,0 +1,18 @@
+# Keep the build context (and image) lean — none of this is needed at runtime.
+.venv/
+.git/
+.gitignore
+**/__pycache__/
+*.pyc
+*.log
+.env
+
+# Raw corpus + ingestion-only artifacts (only needed to BUILD the graph/index,
+# not to serve queries). _index.json under data/parsed IS needed and is tracked.
+sp100_dataset-*/
+data/graph_csv/
+data/parsed/*
+!data/parsed/_index.json
+
+# Docs are not part of the service.
+docs/

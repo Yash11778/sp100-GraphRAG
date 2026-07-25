@@ -1,3 +1,13 @@
+---
+title: SP100 GraphRAG
+emoji: 📊
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Round 3 — Optimized TigerGraph GraphRAG (S&P-100 SEC Filings)
 
 Three-pipeline comparison for the TigerGraph GraphRAG Hackathon Round 3
