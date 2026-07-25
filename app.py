@@ -2,17 +2,32 @@
 
 Why this file exists: the Space SDKs that run a plain Dockerfile are a paid
 feature, and the Gradio SDK is free. Gradio is itself built on FastAPI, so
-rather than rewriting the service we mount OUR FastAPI app (`api/app.py`) and
-hang a small Gradio UI off it. Every REST route the dashboard uses keeps its
-exact path:
+rather than rewriting the service we serve our existing FastAPI app
+(`api/app.py`) from Gradio's own server. Every REST route the dashboard uses
+keeps its exact path:
 
-    GET  /health   GET  /ready    GET  /results    POST /compare   POST /query
+    GET /health    GET /results    POST /compare
 
-...and a human-browsable UI is served at `/ui` so a judge who opens the Space
-URL sees something useful instead of a JSON 404.
+(The dashboard's vite proxy also lists /ready, /query and /debug, but api/app.py
+never defined them -- they are stale entries and nothing calls them.)
 
-Spaces runs `python app.py`, so the __main__ block below is the real entrypoint;
-it serves the combined ASGI app on the port Spaces expects (7860).
+The Gradio UI is served at `/` so a judge who opens the Space URL sees something
+useful instead of a JSON 404. Gradio owns `/`, so our root route is skipped
+rather than fighting it.
+
+HOW IT BINDS THE PORT -- this bit is load-bearing. An earlier version mounted
+Gradio inside our FastAPI app and ran `uvicorn.run(...)` directly. On Spaces that
+crashed with:
+
+    ERROR: [Errno 98] error while attempting to bind on ('0.0.0.0', 7860):
+           address already in use
+
+because the Spaces/ZeroGPU runtime is built around Gradio's own `launch()` and
+already holds 7860 -- our second bind had nowhere to go. So we now let Gradio
+launch (the platform-supported path) and graft our API routes onto the server it
+creates, instead of standing up a competing one. `prevent_thread_lock=True`
+returns control so the routes can be attached, then `block_thread()` keeps the
+process alive the way `launch()` normally would.
 
 Run locally exactly as Spaces does:
     .venv/bin/python app.py
@@ -135,15 +150,42 @@ with gr.Blocks(title="SP100 GraphRAG — Round 3") as demo:
     run.click(compare, [q_in, gt_in], [answers, evidence, results_md])
     gr.Markdown(
         "### REST API\n"
-        "`GET /health` · `GET /ready` · `GET /results` · `POST /compare` · `POST /query`\n\n"
+        "`GET /health` · `GET /results` · `POST /compare`\n\n"
         "The evaluation dashboard consumes these directly."
     )
 
-# Mount the Gradio UI at /ui ON TOP OF our FastAPI app, so the REST routes keep
-# their original paths and the dashboard needs no change.
+# Kept so the module can still be served by a plain ASGI runner (e.g. a local
+# `uvicorn app:app`), where nothing else owns the port. Spaces does NOT use this
+# object -- see the __main__ block for how the port is actually bound there.
 app = gr.mount_gradio_app(fastapi_app, demo, path="/ui")
 
 
+def _attach_api_routes(server_app) -> int:
+    """Graft our REST routes onto the FastAPI instance Gradio built.
+
+    Inserted at the FRONT of the route list so they resolve before any Gradio
+    catch-all, which keeps /health, /results and /compare on their original
+    paths -- the dashboard needs no change and judges' curl commands still work.
+    """
+    from fastapi.routing import APIRoute
+    ours = [r for r in fastapi_app.routes if isinstance(r, APIRoute)]
+    existing = {(r.path, tuple(sorted(r.methods or ()))) for r in server_app.routes
+                if isinstance(r, APIRoute)}
+    new = [r for r in ours if (r.path, tuple(sorted(r.methods or ()))) not in existing]
+    server_app.router.routes[:0] = new
+    return len(new)
+
+
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=SPACE_PORT)
+    # Gradio owns the port on Spaces; launching any other server here is what
+    # produced the "address already in use" crash. prevent_thread_lock returns
+    # the FastAPI instance so we can attach our routes to THAT server.
+    # NB: no show_api= argument -- Gradio 6 removed it.
+    server_app, _, _ = demo.launch(
+        server_name="0.0.0.0", server_port=SPACE_PORT,
+        prevent_thread_lock=True,
+    )
+    n = _attach_api_routes(server_app)
+    print(f"[startup] attached {n} REST routes to the Gradio server "
+          f"on port {SPACE_PORT}", flush=True)
+    demo.block_thread()

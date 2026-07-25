@@ -16,9 +16,23 @@ from dotenv import dotenv_values  # noqa: E402
 # Local dev reads a .env file; hosted deploys (Render, etc.) inject real
 # environment variables. Merge both, with real env vars taking precedence.
 _ENV = {**dotenv_values(Path(__file__).parent.parent / ".env"), **os.environ}
-HOST = _ENV["TG_HOST"].rstrip("/")
-SECRET = _ENV["TG_SECRET"]
+# Read with .get, not [] -- this module is imported transitively by api/app.py, so
+# a hard KeyError here takes down the WHOLE service at import time, including the
+# LLM-only and Traditional-RAG pipelines that never touch TigerGraph. A missing
+# credential should degrade GraphRAG with a readable message, not blank the demo.
+# Enforced at first use in _require_creds() below.
+HOST = (_ENV.get("TG_HOST") or "").rstrip("/")
+SECRET = _ENV.get("TG_SECRET") or ""
 GRAPH = _ENV.get("TG_GRAPH", "sp100")
+
+
+def _require_creds() -> None:
+    missing = [n for n, v in (("TG_HOST", HOST), ("TG_SECRET", SECRET)) if not v]
+    if missing:
+        raise RuntimeError(
+            f"TigerGraph is not configured: {', '.join(missing)} not set. "
+            "Set it in .env locally, or as a Space secret/variable when hosted."
+        )
 
 _session = requests.Session()
 _token_cache: dict = {}
@@ -35,6 +49,7 @@ def token(graph: str | None = None, _retries: int = 6) -> str:
     key = graph or "__global__"
     if key in _token_cache:
         return _token_cache[key]
+    _require_creds()
     body = {"secret": SECRET}
     if graph:
         body["graph"] = graph
