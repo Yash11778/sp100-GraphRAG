@@ -44,6 +44,15 @@ class QueryRequest(BaseModel):
     ground_truth: str = ""
 
 
+def _live_bertscore_enabled() -> bool:
+    """BERTScore is memory-heavy (roberta-large) and can OOM small hosted tiers.
+
+    Keep it opt-in for live /compare traffic. Offline benchmark scripts still run
+    full scoring directly through eval/judge.py.
+    """
+    return os.getenv("ENABLE_LIVE_BERTSCORE", "").lower() in ("1", "true", "yes")
+
+
 @app.post("/compare")
 def compare(req: QueryRequest):
     """Run all three pipelines in parallel; judge + BERTScore when GT provided."""
@@ -96,8 +105,17 @@ def compare(req: QueryRequest):
             "judge_graphrag":  _eval_executor.submit(llm_judge_with_source, req.question, req.ground_truth, p3["answer"]),
             "graded_graphrag": _eval_executor.submit(graded_judge, req.question, req.ground_truth, p3["answer"]),
             "citation_graphrag": _eval_executor.submit(citation_judge, req.question, p3["answer"], p3.get("evidence", "")),
-            "bertscore":       _eval_executor.submit(compute_bertscore, [p3["answer"]], [req.ground_truth]),
         }
+        if _live_bertscore_enabled():
+            ev["bertscore"] = _eval_executor.submit(compute_bertscore, [p3["answer"]], [req.ground_truth])
+        else:
+            out["bertscore"] = {
+                "raw_f1": 0.0,
+                "rescaled_f1": 0.0,
+                "bonus_hit": False,
+                "disabled": True,
+                "reason": "Enable with ENABLE_LIVE_BERTSCORE=1",
+            }
         for key, fut in ev.items():
             try:
                 value = fut.result(timeout=90)
