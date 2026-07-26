@@ -1,8 +1,9 @@
 # Serves the FastAPI app (api/app.py) directly -- no Gradio wrapper needed.
 # Originally written for HF Spaces' Docker SDK (now a paid tier there); works
 # unmodified on any container platform that runs a Dockerfile, e.g. Railway,
-# Cloud Run, Render. Python 3.14 to match the pinned requirements.txt.
-FROM python:3.14-slim
+# Cloud Run, Render. Python 3.12 matches the pinned requirements and the
+# Spaces metadata in README.md.
+FROM python:3.12-slim
 
 # Runtime libs: libgomp1 is needed by faiss-cpu / torch (OpenMP).
 RUN apt-get update && apt-get install -y --no-install-recommends \
