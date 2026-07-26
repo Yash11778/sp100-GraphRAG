@@ -1,5 +1,7 @@
-# HuggingFace Spaces (Docker SDK) — serves the FastAPI app on port 7860.
-# Python 3.14 to match the pinned, reproducible requirements.txt.
+# Serves the FastAPI app (api/app.py) directly -- no Gradio wrapper needed.
+# Originally written for HF Spaces' Docker SDK (now a paid tier there); works
+# unmodified on any container platform that runs a Dockerfile, e.g. Railway,
+# Cloud Run, Render. Python 3.14 to match the pinned requirements.txt.
 FROM python:3.14-slim
 
 # Runtime libs: libgomp1 is needed by faiss-cpu / torch (OpenMP).
@@ -26,4 +28,7 @@ COPY --chown=user . .
 
 USER user
 EXPOSE 7860
-CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "7860"]
+# Shell form (not exec-form CMD ["..."]) so $PORT actually expands. Railway/
+# Cloud Run/Render assign a dynamic port via $PORT; HF Spaces' Docker SDK sets
+# none, so it falls back to 7860 to match the README's app_port.
+CMD uvicorn api.app:app --host 0.0.0.0 --port ${PORT:-7860}
