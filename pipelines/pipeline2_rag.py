@@ -18,13 +18,52 @@ _FAISS = _ROOT / "data/chunks/rag_index.faiss"
 _CHUNKS = _ROOT / "data/chunks/chunks.pkl"
 _EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 
+# The index files are tracked with Git LFS, but not every hosted build pulls a
+# repo with `git-lfs smudge` (some platforms fetch a plain tarball/zip via API),
+# which leaves a tiny LFS *pointer* text file on disk instead of the real
+# binary. media.githubusercontent.com serves the actual LFS object content over
+# plain HTTP regardless of how the deploy platform checked the repo out, so we
+# use it as a one-time self-heal on first load.
+_LFS_POINTER_PREFIX = b"version https://git-lfs.github.com/spec/v1"
+_LFS_MEDIA_BASE = os.getenv(
+    "RAG_INDEX_BASE_URL",
+    "https://media.githubusercontent.com/media/Yash11778/sp100-GraphRAG/main/data/chunks",
+)
+
 _embedder = _index = _chunks = _client = None
 _load_error = ""
+
+
+def _is_lfs_pointer(path: Path) -> bool:
+    try:
+        with open(path, "rb") as f:
+            return f.read(len(_LFS_POINTER_PREFIX)) == _LFS_POINTER_PREFIX
+    except FileNotFoundError:
+        return False
+
+
+def _ensure_real_file(path: Path) -> None:
+    if path.exists() and path.stat().st_size > 1024 and not _is_lfs_pointer(path):
+        return
+    import requests
+    r = requests.get(f"{_LFS_MEDIA_BASE}/{path.name}", timeout=180, stream=True)
+    r.raise_for_status()
+    tmp = path.with_suffix(path.suffix + ".part")
+    with open(tmp, "wb") as f:
+        for chunk in r.iter_content(chunk_size=1 << 20):
+            f.write(chunk)
+    tmp.rename(path)
 
 
 def _load():
     global _embedder, _index, _chunks, _client, _load_error
     if _index is not None:
+        return
+    try:
+        _ensure_real_file(_FAISS)
+        _ensure_real_file(_CHUNKS)
+    except Exception as e:
+        _load_error = f"RAG index not built and download fallback failed: {e}"
         return
     if not _FAISS.exists() or not _CHUNKS.exists():
         _load_error = "RAG index not built. Run ingestion/build_chunks.py first."
