@@ -12,6 +12,7 @@
 sp100_dataset-*/
 data/graph_csv/
 data/parsed/*
+!data/parsed/
 !data/parsed/_index.json
 
 # Docs are not part of the service.

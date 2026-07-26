@@ -8,7 +8,17 @@ import re
 from pathlib import Path
 
 _ROOT = Path(__file__).parent.parent
-_INDEX = json.loads((_ROOT / "data/parsed/_index.json").read_text())
+
+
+def _load_index() -> list[dict]:
+    index_path = _ROOT / "data/parsed/_index.json"
+    try:
+        return json.loads(index_path.read_text())
+    except FileNotFoundError:
+        return []
+
+
+_INDEX = _load_index()
 
 TICKERS = sorted({r["ticker"] for r in _INDEX})
 SECTOR = {}
